@@ -1,10 +1,11 @@
 -- AstraAI PostgreSQL schema
 -- Compatible with Neon PostgreSQL
+-- Corrected: current_role renamed to user_role
 
 CREATE TABLE IF NOT EXISTS users (
     user_id BIGINT PRIMARY KEY,
 
-    current_role VARCHAR(50)
+    user_role VARCHAR(50)
         NOT NULL DEFAULT 'assistant',
 
     personality VARCHAR(50)
@@ -55,7 +56,8 @@ CREATE TABLE IF NOT EXISTS memories (
 
     memory_value TEXT NOT NULL,
 
-    importance INTEGER NOT NULL DEFAULT 1,
+    importance INTEGER
+        NOT NULL DEFAULT 1,
 
     created_at TIMESTAMP
         NOT NULL DEFAULT NOW(),
